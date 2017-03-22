@@ -3,9 +3,13 @@
     Redirecting.. Please wait..
     <script>
       var l = window.location.href;
+      l = unescape(l);
       redirect(l);
 
       function redirect (url) {
+
+        console.log(url);
+
         var link1 = '';
         var link2 = '';
         
