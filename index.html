@@ -2,7 +2,6 @@
   <body>
     Redirecting.. Please wait..
     <script>
-
       var l = window.location.href;
       redirect(l);
 
@@ -32,13 +31,6 @@
 
         console.log(link1);
         console.log(link2);
-
-        // $.get({
-        //   url: link1,
-        //   success: function () {
-        //     window.location.href = link2
-        //   }
-        // })
 
         var oReq = new XMLHttpRequest();
         oReq.addEventListener("load", function () {
