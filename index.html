@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </head>
+  <body>
+    <script>
+
+      var l = window.location.href;
+      redirect(l);
+
+      function redirect (url) {
+        var link1 = '';
+        var link2 = '';
+        
+        var arr = url.split('link1=');
+        if (arr.length > 1) {
+          if (arr[1].indexOf('&link2=') >= 0) {
+            var arr2 = arr[1].split('&link2=');
+            link1 = arr2[0];
+            link2 = arr2[1];
+          } else {
+            link1 = arr[1];
+            arr = url.split('link2=');
+            if (arr[1].indexOf('&link1=') >= 0) {
+              var arr2 = arr[1].split('&link1=');
+              link2 = arr2[0];
+            }
+          }
+        }
+
+        if (link1 == '' || link2 == '') {
+          return;
+        }
+
+        $.get({
+          url: link1,
+          success: function () {
+            window.location.href = link2
+          }
+        })
+      }
+    </script>
+  </body>
+</html>
