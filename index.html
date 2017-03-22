@@ -1,8 +1,6 @@
 <html>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  </head>
   <body>
+    Redirecting.. Please wait..
     <script>
 
       var l = window.location.href;
@@ -35,12 +33,19 @@
         console.log(link1);
         console.log(link2);
 
-        $.get({
-          url: link1,
-          success: function () {
-            window.location.href = link2
-          }
-        })
+        // $.get({
+        //   url: link1,
+        //   success: function () {
+        //     window.location.href = link2
+        //   }
+        // })
+
+        var oReq = new XMLHttpRequest();
+        oReq.addEventListener("load", function () {
+          window.location.href = link2;
+        });
+        oReq.open("GET", link1);
+        oReq.send();
       }
     </script>
   </body>
